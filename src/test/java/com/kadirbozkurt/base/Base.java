@@ -1,4 +1,4 @@
-package com.kadirbozkurt;
+package com.kadirbozkurt.base;
 
 import com.kadirbozkurt.pages.BasketPage;
 import com.kadirbozkurt.pages.MainPage;

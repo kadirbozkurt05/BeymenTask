@@ -1,7 +1,7 @@
 package com.kadirbozkurt.step_defs;
 import static com.kadirbozkurt.utils.Driver.*;
 
-import com.kadirbozkurt.Base;
+import com.kadirbozkurt.base.Base;
 import com.kadirbozkurt.utils.ConfigReader;
 import com.kadirbozkurt.utils.Driver;
 import com.kadirbozkurt.utils.ExcelReader;
@@ -10,9 +10,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 import static org.junit.Assert.*;

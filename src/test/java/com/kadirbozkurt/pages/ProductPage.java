@@ -22,4 +22,5 @@ public class ProductPage {
     public WebElement addToBasket;
     @FindBy(css = ".m-notification__button.btn")
     public WebElement goToBasket;
+
 }
