@@ -1,23 +1,18 @@
 package com.kadirbozkurt.api;
 import com.kadirbozkurt.utils.ConfigReader;
-import io.cucumber.java.BeforeStep;
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
-import org.apache.hc.core5.reactor.Command;
-import org.junit.Test;
 
 import java.util.Random;
 
-
-
 public class ApiTest {
-    static String token= ConfigReader.getToken();
-    static String key = ConfigReader.getKey();
-    static String board_id="";
-    static String list_id="";
-    static String[] cards_id = new String[2];
+    private static String token= ConfigReader.getToken();
+    private static String key = ConfigReader.getKey();
+    private static ResponseBody body;
+    private static String board_id="";
+    private static String list_id="";
+    private static String[] cards_id = new String[2];
 
     public static void main(String[] args) {
         RestAssured.baseURI = "https://api.trello.com/1/";
@@ -35,7 +30,7 @@ public class ApiTest {
                 .queryParam("key",key)
                 .queryParam("token",token)
                 .post("boards/");
-        ResponseBody body = response.getBody();
+        body = response.getBody();
         System.out.println(response.getStatusLine());
         System.out.println(body.asString());
         board_id = response.path("id");
@@ -48,7 +43,7 @@ public class ApiTest {
                 .queryParam("token",token).and()
                 .header("Content-Type", "application/json;charset=utf-8")
                 .when().post("boards/{id}/lists");
-        ResponseBody body = response.getBody();
+        body = response.getBody();
         System.out.println(response.getStatusLine());
         System.out.println(body.asString());
         list_id = response.path("id");
@@ -63,7 +58,7 @@ public class ApiTest {
                     .queryParam("token",token).and()
                     .header("Content-Type", "application/json;charset=utf-8")
                     .when().post("cards");
-            ResponseBody body = response.getBody();
+            body = response.getBody();
             System.out.println(response.getStatusLine());
             System.out.println(body.asString());
             cards_id[i] = response.path("id");
@@ -80,7 +75,7 @@ public class ApiTest {
                 .queryParam("token",token).and()
                 .header("Content-Type", "application/json;charset=utf-8")
                 .when().put("cards/{id}");
-        ResponseBody body = response.getBody();
+        body = response.getBody();
         System.out.println(response.getStatusLine());
         System.out.println(body.asString());
     }
@@ -93,7 +88,7 @@ public class ApiTest {
                     .queryParam("token",token).and()
                     .header("Content-Type", "application/json;charset=utf-8")
                     .when().delete("cards/{id}");
-            ResponseBody body = response.getBody();
+            body = response.getBody();
             System.out.println(response.getStatusLine());
             System.out.println(body.asString());
         }
@@ -105,7 +100,7 @@ public class ApiTest {
                 .queryParam("token",token).and()
                 .header("Content-Type", "application/json;charset=utf-8")
                 .when().delete("boards/{id}");
-        ResponseBody body = response.getBody();
+        body = response.getBody();
         System.out.println(response.getStatusLine());
         System.out.println(body.asString());
     }
